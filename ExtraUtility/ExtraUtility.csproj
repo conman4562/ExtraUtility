@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{ED01C633-FFF7-48D4-888C-8061836013B9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ExtraUtility</RootNamespace>
+    <AssemblyName>ExtraUtility</AssemblyName>
+    <TargetFramework>net472</TargetFramework>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="D:\engines\Steam\steamapps\common\Content Warning\Content Warning_Data\Managed\*.dll" Publicize="True"/>
+  </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <Target Name="CopyOutputFileToGame" AfterTargets="Build">
+        <Copy SourceFiles="$(OutputPath)\$(AssemblyName).dll" DestinationFolder="D:\engines\Steam\steamapps\common\Content Warning\Plugins\$(AssemblyName)\" Retries="60"/>
+<!--        <Copy SourceFiles="$(OutputPath)\$(AssemblyName).dll" DestinationFolder="$(UnityPluginsDir)"/>-->
+    </Target>
+
+  
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\BepInEx.AssemblyPublicizer.MSBuild.0.4.2\build\BepInEx.AssemblyPublicizer.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BepInEx.AssemblyPublicizer.MSBuild.0.4.2\build\BepInEx.AssemblyPublicizer.MSBuild.props'))" />
+  </Target>
+</Project>
