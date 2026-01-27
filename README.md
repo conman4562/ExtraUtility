@@ -1,7 +1,7 @@
 # ExtraUtility / Content Warning Mod
 Are your friends annoying little idiots who use the push mod?\
 This mod has:
-- Anti-Ragdoll toggle (stops you from ever being ragdolled, including the push mod)\
+- Anti-Ragdoll toggle (stops you from ever being ragdolled, including the push mod)
 - Infinite stamina toggle
 - Infinite health toggle
 - Infinite oxygen toggle
